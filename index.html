@@ -28,8 +28,9 @@
         <!-- Question 1 -->
         <div class="question active" id="question1">
             <h3>受访者姓名:</h3>
-            <audio autoplay>
-                <source src="https://drive.google.com/file/d/1IYu83z3nuJ-JJwoPjHMCe43uLpPU5LV8/view?usp=drive_link" type="audio/mp3">
+            <audio autoplay muted>
+                <!-- CHANGED: Updated Google Drive link to direct download -->
+                <source src="https://docs.google.com/uc?export=download&id=1IYu83z3nuJ-JJwoPjHMCe43uLpPU5LV8" type="audio/mp3">
                 您的浏览器不支持音频播放。
             </audio>
             <input type="text" id="name" name="name" required>
@@ -39,8 +40,9 @@
         <!-- Question 2 -->
         <div class="question" id="question2">
             <h3>您从中心获得了哪种帮助？</h3>
-            <audio autoplay>
-                <source src="https://drive.google.com/file/d/1PSCD6XGL5P4d-Q7W9W1-lSZ1LS4CkI4d/view?usp=drive_link" type="audio/mp3">
+            <audio autoplay muted>
+                <!-- CHANGED: Updated Google Drive link to direct download -->
+                <source src="https://docs.google.com/uc?export=download&id=1PSCD6XGL5P4d-Q7W9W1-lSZ1LS4CkI4d" type="audio/mp3">
                 您的浏览器不支持音频播放。
             </audio>
             <select id="question2" name="question2" required onchange="goToNext('question3')">
@@ -54,8 +56,9 @@
         <!-- Question 3 -->
         <div class="question" id="question3">
             <h3>总体来说，您对中心所提供的协助有多满意？</h3>
-            <audio autoplay>
-                <source src="https://drive.google.com/file/d/1jVopM4t6NOyAQEEUs53fU2h3WtmLsAOc/view?usp=drive_link" type="audio/mp3">
+            <audio autoplay muted>
+                <!-- CHANGED: Updated Google Drive link to direct download -->
+                <source src="https://docs.google.com/uc?export=download&id=1jVopM4t6NOyAQEEUs53fU2h3WtmLsAOc" type="audio/mp3">
                 您的浏览器不支持音频播放。
             </audio>
             <label>
@@ -110,6 +113,15 @@
                 submitSurvey(); // Call the submitSurvey function
             }
         }
+
+        // Function to unmute audio on user interaction
+        // *** ADDED: Unmutes audio once user clicks anywhere ***
+        document.body.addEventListener('click', () => {
+            const audios = document.querySelectorAll('audio');
+            audios.forEach(audio => {
+                audio.muted = false;
+            });
+        }, { once: true });
 
         // Function to submit the survey
         async function submitSurvey() {
