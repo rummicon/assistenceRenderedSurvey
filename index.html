@@ -51,26 +51,26 @@
             </select>
         </div>
 
-       <div class="question" id="question3">
-    <h3>总体来说，您对中心所提供的协助有多满意？</h3>
-    <audio autoplay>
-        <source src="YOUR_AUDIO_LINK_FOR_Q3.mp3" type="audio/mp3">
-        您的浏览器不支持音频播放。
-    </audio>
-    <label>
-        <input type="radio" name="question3" value="1星: 很不满意" onclick="checkAndSubmit()"> 1星: 很不满意
-    </label><br>
-    <label>
-        <input type="radio" name="question3" value="2星: 不满意" onclick="checkAndSubmit()"> 2星: 不满意
-    </label><br>
-    <label>
-        <input type="radio" name="question3" value="3星: 满意" onclick="checkAndSubmit()"> 3星: 满意
-    </label><br>
-    <label>
-        <input type="radio" name="question3" value="4星: 很满意" onclick="checkAndSubmit()"> 4星: 很满意
-    </label>
-</div>
-
+        <!-- Question 3 -->
+        <div class="question" id="question3">
+            <h3>总体来说，您对中心所提供的协助有多满意？</h3>
+            <audio autoplay>
+                <source src="YOUR_AUDIO_LINK_FOR_Q3.mp3" type="audio/mp3">
+                您的浏览器不支持音频播放。
+            </audio>
+            <label>
+                <input type="radio" name="question3" value="1星: 很不满意" onclick="checkAndSubmit()"> 1星: 很不满意
+            </label><br>
+            <label>
+                <input type="radio" name="question3" value="2星: 不满意" onclick="checkAndSubmit()"> 2星: 不满意
+            </label><br>
+            <label>
+                <input type="radio" name="question3" value="3星: 满意" onclick="checkAndSubmit()"> 3星: 满意
+            </label><br>
+            <label>
+                <input type="radio" name="question3" value="4星: 很满意" onclick="checkAndSubmit()"> 4星: 很满意
+            </label>
+        </div>
     </form>
 
     <!-- Thank You Page -->
@@ -91,6 +91,24 @@
 
             currentQuestion.classList.remove('active');
             document.getElementById(nextQuestionId).classList.add('active');
+        }
+
+        // Function to validate the final question and submit the survey
+        function checkAndSubmit() {
+            const radios = document.querySelectorAll('input[name="question3"]');
+            let isAnswered = false;
+
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    isAnswered = true;
+                }
+            });
+
+            if (!isAnswered) {
+                alert('请完成此问题！');
+            } else {
+                submitSurvey(); // Call the submitSurvey function
+            }
         }
 
         // Function to submit the survey
