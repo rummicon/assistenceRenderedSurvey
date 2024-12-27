@@ -43,7 +43,7 @@
                 <source src="YOUR_AUDIO_LINK_FOR_Q2.mp3" type="audio/mp3">
                 您的浏览器不支持音频播放。
             </audio>
-            <select id="question1" name="question1" required onchange="goToNext('question3')">
+            <select id="question2" name="question2" required onchange="goToNext('question3')">
                 <option value="" disabled selected>请选择</option>
                 <option value="咨询资料和护理服务介绍">咨询资料和护理服务介绍</option>
                 <option value="协助预订活动">协助预订活动</option>
@@ -59,16 +59,16 @@
                 您的浏览器不支持音频播放。
             </audio>
             <label>
-                <input type="radio" name="question2" value="1星: 很不满意" required onclick="submitSurvey()"> 1星: 很不满意
+                <input type="radio" name="question3" value="1星: 很不满意" required onclick="submitSurvey()"> 1星: 很不满意
             </label><br>
             <label>
-                <input type="radio" name="question2" value="2星: 不满意" onclick="submitSurvey()"> 2星: 不满意
+                <input type="radio" name="question3" value="2星: 不满意" onclick="submitSurvey()"> 2星: 不满意
             </label><br>
             <label>
-                <input type="radio" name="question2" value="3星: 满意" onclick="submitSurvey()"> 3星: 满意
+                <input type="radio" name="question3" value="3星: 满意" onclick="submitSurvey()"> 3星: 满意
             </label><br>
             <label>
-                <input type="radio" name="question2" value="4星: 很满意" onclick="submitSurvey()"> 4星: 很满意
+                <input type="radio" name="question3" value="4星: 很满意" onclick="submitSurvey()"> 4星: 很满意
             </label>
         </div>
     </form>
@@ -82,6 +82,13 @@
         // Function to navigate to the next question
         function goToNext(nextQuestionId) {
             const currentQuestion = document.querySelector('.question.active');
+            const input = currentQuestion.querySelector('input, select');
+
+            if (input && !input.checkValidity()) {
+                alert('请完成此问题！');
+                return;
+            }
+
             currentQuestion.classList.remove('active');
             document.getElementById(nextQuestionId).classList.add('active');
         }
@@ -93,8 +100,7 @@
             const data = {};
             formData.forEach((value, key) => { data[key] = value; });
 
-            // Send data to Google Apps Script
-            const response = await fetch(''https://script.google.com/a/macros/chcsa.org.sg/s/AKfycbxP671eA-fialCPZcKzAD2R8-L6gQ_fiY1fLz2iIaSoBKMSxbhWdlwA2wrtNYiJEVr6nQ/exec'', {
+            const response = await fetch('https://script.google.com/a/macros/chcsa.org.sg/s/AKfycbxP671eA-fialCPZcKzAD2R8-L6gQ_fiY1fLz2iIaSoBKMSxbhWdlwA2wrtNYiJEVr6nQ/exec', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
