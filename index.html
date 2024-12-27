@@ -51,26 +51,26 @@
             </select>
         </div>
 
-        <!-- Question 3 -->
-        <div class="question" id="question3">
-            <h3>总体来说，您对中心所提供的协助有多满意？</h3>
-            <audio autoplay>
-                <source src="YOUR_AUDIO_LINK_FOR_Q3.mp3" type="audio/mp3">
-                您的浏览器不支持音频播放。
-            </audio>
-            <label>
-                <input type="radio" name="question3" value="1星: 很不满意" required onclick="submitSurvey()"> 1星: 很不满意
-            </label><br>
-            <label>
-                <input type="radio" name="question3" value="2星: 不满意" onclick="submitSurvey()"> 2星: 不满意
-            </label><br>
-            <label>
-                <input type="radio" name="question3" value="3星: 满意" onclick="submitSurvey()"> 3星: 满意
-            </label><br>
-            <label>
-                <input type="radio" name="question3" value="4星: 很满意" onclick="submitSurvey()"> 4星: 很满意
-            </label>
-        </div>
+       <div class="question" id="question3">
+    <h3>总体来说，您对中心所提供的协助有多满意？</h3>
+    <audio autoplay>
+        <source src="YOUR_AUDIO_LINK_FOR_Q3.mp3" type="audio/mp3">
+        您的浏览器不支持音频播放。
+    </audio>
+    <label>
+        <input type="radio" name="question3" value="1星: 很不满意" onclick="checkAndSubmit()"> 1星: 很不满意
+    </label><br>
+    <label>
+        <input type="radio" name="question3" value="2星: 不满意" onclick="checkAndSubmit()"> 2星: 不满意
+    </label><br>
+    <label>
+        <input type="radio" name="question3" value="3星: 满意" onclick="checkAndSubmit()"> 3星: 满意
+    </label><br>
+    <label>
+        <input type="radio" name="question3" value="4星: 很满意" onclick="checkAndSubmit()"> 4星: 很满意
+    </label>
+</div>
+
     </form>
 
     <!-- Thank You Page -->
