@@ -79,11 +79,12 @@
     </div>
 
     <script>
-        // Unmute audio after user interaction
+        // Unmute and play audio after user interaction
         document.body.addEventListener('click', () => {
             const audios = document.querySelectorAll('audio');
             audios.forEach(audio => {
                 audio.muted = false; // Unmute all audio
+                audio.play().catch(error => console.error('Audio playback error:', error)); // Play audio
             });
         }, { once: true });
 
